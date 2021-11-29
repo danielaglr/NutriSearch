@@ -35,7 +35,7 @@ a {
 }
 .nav-c {
     width:90vw;
-    max-width:1120px;
+    max-width:1500px;
     display:flex;
     align-items:center
 }
@@ -73,4 +73,39 @@ a {
 }
 .main-link a {
     padding:.15rem 1rem
+}
+
+@media only screen and (max-width: 992px) {
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .nav-c {
+        display: none;
+    }
+
+    .nav-c-mobile {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo-mobile {
+        display: flex;
+        align-items: center;
+    }
+    .logo-1 {
+        color: #09D976;
+    }
+    .logo-2 {
+        color: #000;
+    }
+    
+    .hamburger-menu {
+        font-size: 45px;
+    }
+
 }
