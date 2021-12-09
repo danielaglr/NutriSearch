@@ -29,53 +29,53 @@ a {
 /* Navbar */
 
 .navbar {
-    display:flex;
-    align-items:center;
-    justify-content:center
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .nav-c {
-    width:90vw;
-    max-width:1500px;
-    display:flex;
-    align-items:center
+    width: 90vw;
+    max-width: 1500px;
+    display: flex;
+    align-items: center;
 }
 .nav-c-mobile {
     display: none;
 }
 .nav-header {
-    height:6rem;
-    display:flex;
-    justify-content:space-between;
-    align-items:center
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .nav-header img {
-    width:200px;
-    padding-right:15px
+    width: 200px;
+    padding-right: 15px
 }
 .nav-link-c  {
-    display:flex;
-    width:90vw;
-    align-items:center;
-    justify-content:space-between;
-    font-size:20px
+    display: flex;
+    width: 90vw;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
 }
 .nav-links {
-    display:flex
+    display: flex;
 }
 .nav-link {
-    text-transform:capitalize;
-    padding:10px;
-    color:#000
+    text-transform: capitalize;
+    padding: 10px;
+    color: #000;
 }
 .nav-link:hover {
-    color:var(--accent)
+    color: var(--accent)
 }
 
 .main-link {
-    display:flex
+    display: flex;
 }
 .main-link a {
-    padding:.15rem 1rem
+    padding: .15rem 1rem;
 }
 
 /* Mobile Navbar */
