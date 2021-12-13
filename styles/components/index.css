@@ -60,6 +60,17 @@
     border-radius: 15px;
     background-color: var(--accent);
 }
+/* Recipe Preview */
+.recipe-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--contrast);
+}
+.recipe-cards {
+    width: 90vw;
+    max-width: 1500px;
+}
 /* Mobile Hero */
 @media only screen and (max-width: 992px) {
 
