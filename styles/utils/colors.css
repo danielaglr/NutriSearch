@@ -1,5 +1,7 @@
 :root {
-    --primary: #fff;
+    /* Main */
+    --primary: #fafafa;
+    --contrast: #f3f4f6;
     --accent: #09D976;
     --darker-accent: #069853;
 }
