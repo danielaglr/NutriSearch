@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./styles/utils/colors.css">
     <link rel="stylesheet" href="./styles/utils/fonts.css">
     <link rel="stylesheet" href="./styles/global/navbar.css">
-    <link rel="stylesheet" href="./styles/components/index.css">
+    <link rel="stylesheet" href="./styles/components/recipes.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -60,27 +60,17 @@
     </nav>
     <!-- Main -->
     <main class="main-content">
-        <!-- Hero -->
-        <hero class="hero-container">
-            <div class="hero-image">
-                <img src="./assets/svgs/hero-image.svg">
-            </div>
-            <div class="hero-text">
-                <div class="hero-title">
-                    <h1>Best recipes, none of the hassle</h1>
-                </div>
-                <div class="hero-info">
-                    <h3>A versatile, easy-to-understand, calorie tracker and recipe converter.</h3>
-                </div>
-                <div class="hero-button">
-                    <a href="">Get Started</a>
+        <!-- Recipe Finder -->
+        <div class="recipes-container">
+            <div class="recipe-find-container">
+                <div class="recipe-find-box">
+                    <div class="recipe-searchbar">
+                        <input id="recipe-find-search" type="text" placeholder="Ingredients..">
+                    </div>
                 </div>
             </div>
-        </hero>
-        <!-- Footer -->
-        <footer class="footer-container"></footer>
+            <div class="recipe-display-container"></div>
+        </div>
     </main>
-    <!-- Scripts -->
-    <script src="./javascript/nav-toggle.js"></script>
 </body>
 </html>
