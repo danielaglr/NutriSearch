@@ -36,11 +36,14 @@
 .recipe-searchbar {
     display: flex;
     width: 85%;
-    height: 15px;
+    height: 30px;
     margin-top: 20px;
-    justify-content: center;
+    border: 2px #000 solid;
+    border-radius: 20px;
 }
 #recipe-find-search {
     outline: none;
     border: none;
+    margin-left: 10px;
+    width: 90%;
 }

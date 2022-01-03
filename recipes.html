@@ -23,7 +23,7 @@
             </div>
             <div class="nav-link-c">
                 <div class="nav-links">
-                    <a href="" class="nav-link"> home </a>
+                    <a href="./index.html" class="nav-link"> home </a>
                     <a href="" class="nav-link"> about </a>
                     <a href="" class="nav-link"> nutrition </a>
                 </div>
@@ -50,7 +50,7 @@
             </div>
             <div class="nav-link-mobile-c">
                 <div class="nav-links-mobile">
-                    <a href="" class="nav-link-m"> home </a>
+                    <a href="./index.html" class="nav-link-m"> home </a>
                     <a href="" class="nav-link-m"> about </a>
                     <a href="" class="nav-link-m"> nutrition </a>
                     <a href="./recipes.html" class="nav-link-m"> recipes </a>
@@ -69,8 +69,20 @@
                     </div>
                 </div>
             </div>
-            <div class="recipe-display-container"></div>
+            <div class="recipe-display-container">
+                <ul class="recipe-display"></ul>
+            </div>
         </div>
     </main>
+    <script src="./javascript/nutrisearch.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById("recipe-find-search").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                apiSearch();
+            }
+        });
+    </script>
 </body>
 </html>
