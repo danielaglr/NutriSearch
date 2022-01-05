@@ -47,3 +47,18 @@
     margin-left: 10px;
     width: 90%;
 }
+#hit-counter {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.alert {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.nrf-alert {
+    border-color: #ff4757;
+    background: #ffe0e3;
+    color: #ff4757
+}
