@@ -23,17 +23,14 @@ async function apiSearch() {
         ul.removeChild(ul.firstChild);
     }
 
-    if (resulthits.length != 0) {
-        resulthits.innerHTML = "";
+    if (!document.getElementById('nrf-alert-id').classList.contains('inactive')) {
+        document.getElementById('nrf-alert-id').classList.toggle('inactive')
     }
 
     await fetch(edamamUrl).then(r => r.json()).then(function(data) {
         let recipes = data.hits
-        console.log(edamamUrl);
-        console.log(recipes)
-        console.log(recipes.length)
         if (recipes.length === 0) {
-            resulthits.innerHTML = "No results found."
+            document.getElementById('nrf-alert-id').classList.toggle('inactive')
             } else {
                 return recipes.map(function(recipe) {
                 let li = createNode('li');

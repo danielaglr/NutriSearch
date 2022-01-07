@@ -54,11 +54,33 @@
 }
 .alert {
     display: flex;
-    width: 100%;
+    width: 300px;
+    height: 45px;
     justify-content: center;
+    border-left: 8px solid #bababa;
+    border-radius: 4px;
+    align-items: center;
+    text-align: left;
+    font-size: 16px;
+    margin: 5px;
 }
 .nrf-alert {
     border-color: #ff4757;
     background: #ffe0e3;
     color: #ff4757
+}
+.alert-icon, .alert-exit {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 0 8px;
+}
+.alert-content {
+    width: 100%;
+    line-height: 1.5px;
+}
+.inactive {
+    display: none;
 }
