@@ -26,6 +26,7 @@
 }
 .recipe-find-box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: #ffffff;
     width: 600px;
@@ -46,6 +47,33 @@
     border: none;
     margin-left: 10px;
     width: 90%;
+}
+.recipe-adv-opt {
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    height: 100%;
+}
+.recipe-adv-tgl {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+.bx-chevron-down {
+    font-size: 20px;
+}
+.recipe-adv-display {
+    display: none;
+    width: 100%;
+}
+.recipe-adv-chkbx {
+    display: flex;
+
 }
 #hit-counter {
     position: fixed;
@@ -80,6 +108,9 @@
 .alert-content {
     width: 100%;
     line-height: 1.5px;
+}
+.active {
+    display: flex;
 }
 .inactive {
     display: none;
