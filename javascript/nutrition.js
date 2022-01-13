@@ -25,7 +25,7 @@ async function searchAPI(){
     const SPOONACULAR_API_URL = `https://api.spoonacular.com/food/ingredients/search?query=${userInput}&apiKey=${SPOONACULAR_API_KEY}&number=${resultsNumber}`;
     let idNumber;
     
-
+    // first searches the API for the ID of whatever inputed food, then searches the "search by ID" API for nutritional info about the inputed food
     await fetch(SPOONACULAR_API_URL)
         .then(response => response.json())
         .then(data => {
