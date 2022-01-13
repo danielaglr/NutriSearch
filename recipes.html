@@ -65,7 +65,12 @@
             <div class="recipe-find-container">
                 <div class="recipe-find-box">
                     <div class="recipe-searchbar">
-                        <input id="recipe-find-search" type="text" placeholder="Ingredients..">
+                        <div class="recipe-search-input">
+                            <input id="recipe-find-search" type="text" placeholder="Ingredients..">
+                        </div>
+                        <div class="recipe-search-icons">
+                            <i class='bx bx-barcode-reader'></i>
+                        </div>
                     </div>
                     <div class="recipe-adv-opt">
                         <div class="recipe-adv-tgl">
@@ -74,7 +79,7 @@
                         </div>
                         <div class="recipe-adv-display">
                             <div class="recipe-adv-chkbx">
-                                <input type="checkbox" name="" id="">
+                                <input type="checkbox" name="" id="api-csine-tgle">
                                 <input type="checkbox" name="" id="">
                                 <input type="checkbox" name="" id="">
                                 <input type="checkbox" name="" id="">
@@ -105,6 +110,8 @@
     </main>
     <script src="./javascript/nutrisearch.js"></script>
     <script src="./javascript/recipeadvToggle.js"></script>
+    <script src="./javascript/barcodeScan.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.js"></script>
 
     <script type="text/javascript">
         document.getElementById("recipe-find-search").addEventListener("keyup", function(event) {
@@ -112,6 +119,10 @@
                 event.preventDefault();
                 apiSearch();
             }
+        });
+
+        document.getElementsByClassName("bx-barcode-reader")[0].addEventListener("click", () => {
+            barcodeScanner();
         });
     </script>
 </body>
