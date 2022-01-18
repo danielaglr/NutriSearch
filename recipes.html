@@ -72,6 +72,7 @@
                             <i class='bx bx-barcode-reader'></i>
                         </div>
                     </div>
+                    <div class="barcode-scan-display" id="barcode-scan-display"></div>
                     <div class="recipe-adv-opt">
                         <div class="recipe-adv-tgl">
                             <p>Advanced Options</p>
@@ -111,7 +112,7 @@
     <script src="./javascript/nutrisearch.js"></script>
     <script src="./javascript/recipeadvToggle.js"></script>
     <script src="./javascript/barcodeScan.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
 
     <script type="text/javascript">
         document.getElementById("recipe-find-search").addEventListener("keyup", function(event) {
@@ -122,7 +123,11 @@
         });
 
         document.getElementsByClassName("bx-barcode-reader")[0].addEventListener("click", () => {
-            barcodeScanner();
+            function onScanSuccess(decodedText, decodedResult) {
+            console.log(`Code scanned = ${decodedText}`, decodedResult);
+            }
+            var html5QrcodeScanner = new Html5QrcodeScanner("barcode-scan-display", { formatsToSupport: [ Html5QrcodeSupportedFormats.UPC_A ]});
+            html5QrcodeScanner.render(onScanSuccess);
         });
     </script>
 </body>
