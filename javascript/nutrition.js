@@ -32,10 +32,22 @@ async function searchAPI(){
             console.log(data);
             idNumber = data.results[0].id;
             console.log(idNumber);
-            const SPOONACULAR_ID_URL = `https://api.spoonacular.com/food/ingredients/${idNumber}/information?amount=1`;
+            const SPOONACULAR_ID_URL = `https://api.spoonacular.com/food/ingredients/${idNumber}/information?apiKey=${SPOONACULAR_API_KEY}&amount=1`;
             console.log(SPOONACULAR_ID_URL);
 
-            await fetch(SPOONACULAR_ID_URL)
+            fetch(SPOONACULAR_ID_URL)
+                .then(idResponse => idResponse.json())
+                .then(idData => {
+                    console.log(idData);
+                    /** need to loop through idResponse.json to get macro information
+                     *  carbs, protein, and fat (maybe sodium too)
+                     * - start at nutrition.nutrients[0]
+                     * - check if the title equals 'Protein', 'Carbohydrates', or 'Fat'
+                     * - Display each of their respective amounts
+                     * */ 
+
+                    
+                });
         })
         .catch(error =>{
             // handle error
