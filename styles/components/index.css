@@ -10,6 +10,9 @@
     flex-direction: row;
     background-color: var(--primary);
 }
+a {
+    color: #fff;
+}
 /* Hero */
 .hero-container {
     width: 90vw;
@@ -54,26 +57,98 @@
 }
 .hero-button a {
     text-transform: capitalize;
-    color: #fff;
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 15px;
     background-color: var(--accent);
 }
-/* Recipe Preview */
-.recipe-container {
+/* Footer */
+.footer-container {
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: var(--contrast);
+    background-color: #262626;
 }
-.recipe-cards {
+.footer {
     width: 90vw;
     max-width: 1500px;
+    height: 20vh;
+}
+.footer-title {
+    width: 100%;
+    color: #fff;
+}
+.footer-title-acc {
+    color: var(--accent);
+}
+.footer-link-c {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+    height: 15vh;
+}
+.footer-link a {
+    list-style: none;
+    text-decoration: none;
+}
+.footer-explore {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 300px;
+}
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 300px;
+}
+.footer-social {
+    align-items: center;
+    justify-content: center;
+}
+.footer-support {
+    height: 100%;
+    width: 300px;
+}
+.footer-support-email {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.support-email-input {
+    width: 250px;
+    height: 35px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    padding-left: 8px;
+    font-size: 16px;
+}
+.support-email-input::placeholder {
+    color: gray;
+}
+.support-email-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 35px;
+    background-color: #f9423d;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+.support-email-submit a {
+    color: #fff;
 }
 /* Mobile Hero */
 @media only screen and (max-width: 992px) {
-
+    .hero-container {
+        height: 100vh;
+    }
     .hero-title h1 {
         line-height: 60px;
     }
