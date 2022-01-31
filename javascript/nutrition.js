@@ -46,6 +46,16 @@ async function searchAPI(){
                      * - Display each of their respective amounts
                      * */ 
 
+                    let count = 0;
+                    nutritionInfo = idData.nutrition.nutrients;
+                    while(count < nutritionInfo.length){
+                        if(nutritionInfo[count].name == 'Carbohydrates'){
+                            console.log(nutritionInfo[count].name);
+                            break;
+                        }else{
+                            count++;
+                        }
+                    }
                     
                 });
         })
