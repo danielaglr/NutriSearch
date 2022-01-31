@@ -41,13 +41,13 @@ async function searchAPI(){
                     console.log(idData);
                     /** need to loop through idResponse.json to get macro information
                      *  carbs, protein, and fat (maybe sodium too)
-                     * - start at nutrition.nutrients[0]
+                     * - start at idData.nutrition.nutrients[0]
                      * - check if the title equals 'Protein', 'Carbohydrates', or 'Fat'
                      * - Display each of their respective amounts
                      * */ 
 
                     let count = 0;
-                    nutritionInfo = idData.nutrition.nutrients;
+                    nutritionInfo = idData.nutrition.nutrients; // represents the array in the json file which holds each macro/micro nutrient & its amount
                     while(count < nutritionInfo.length){
                         if(nutritionInfo[count].name == 'Carbohydrates'){
                             console.log(nutritionInfo[count].name);
