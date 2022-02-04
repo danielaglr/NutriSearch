@@ -17,7 +17,7 @@
     <nav class="navbar">
         <div class="nav-c">
             <div class="nav-header">
-                <a href="" class="nav-logo">
+                <a href="./index.html" class="nav-logo">
                     <img src="./assets/images/logo.png" alt="nutrisearch">
                 </a>
             </div>
@@ -124,9 +124,21 @@
 
         document.getElementsByClassName("bx-barcode-reader")[0].addEventListener("click", () => {
             function onScanSuccess(decodedText, decodedResult) {
-            console.log(`Code scanned = ${decodedText}`, decodedResult);
+                const barcode = decodedText;
+                fetch(`https://world.openfoodfacts.org/api/v0/product/${decodedText}.json`).then(r => r.json()).then(function(data) {
+                console.log(decodedText)
+                console.log(data)
+                })
+            html5QrcodeScanner.clear();
             }
-            var html5QrcodeScanner = new Html5QrcodeScanner("barcode-scan-display", { formatsToSupport: [ Html5QrcodeSupportedFormats.UPC_A ]});
+            var formatsToSupport = [
+                Html5QrcodeSupportedFormats.UPC_A,
+                Html5QrcodeSupportedFormats.UPC_E
+            ]
+            var html5QrcodeScanner = new Html5QrcodeScanner("barcode-scan-display", { 
+                formatsToSupport: formatsToSupport,
+                qrbox: {width: 350, height: 150} 
+            });
             html5QrcodeScanner.render(onScanSuccess);
         });
     </script>
