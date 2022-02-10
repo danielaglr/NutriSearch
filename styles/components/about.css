@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* Common */
+.section-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+}
+/* Main */
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+}
+.FAQ {
+    width: 90vw;
+    max-width: 1500px;
+    height: 90vh;
+}
