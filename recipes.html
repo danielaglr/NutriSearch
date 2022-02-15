@@ -109,21 +109,20 @@
             </div>
         </div>
     </main>
-    <script src="./javascript/nutrisearch.js"></script>
+    <script src="./javascript/nutriSearch.js"></script>
     <script src="./javascript/recipeadvToggle.js"></script>
-    <script src="./javascript/barcodeScan.js"></script>
     <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
 
     <script type="text/javascript">
-        document.getElementById("recipe-find-search").addEventListener("keyup", function(event) {
+        document.getElementById("recipe-find-search").addEventListener("keyup", function(event) { // When user presses the enter key, submit results and run search function.
             if (event.keyCode === 13) {
                 event.preventDefault();
                 apiSearch();
             }
         });
 
-        document.getElementsByClassName("bx-barcode-reader")[0].addEventListener("click", () => {
-            function onScanSuccess(decodedText, decodedResult) {
+        document.getElementsByClassName("bx-barcode-reader")[0].addEventListener("click", () => { // When barcode icon is clicked, run barcode-scanner.
+            function onScanSuccess(decodedText, decodedResult) { // When barcode is found and interpreted, log results and pass through ID to openfoodfacts database API.
                 const barcode = decodedText;
                 fetch(`https://world.openfoodfacts.org/api/v0/product/${decodedText}.json`).then(r => r.json()).then(function(data) {
                 console.log(decodedText)
@@ -131,11 +130,11 @@
                 })
             html5QrcodeScanner.clear();
             }
-            var formatsToSupport = [
+            var formatsToSupport = [ // Establishes supported barcode format as UPC-A and UPC-E.
                 Html5QrcodeSupportedFormats.UPC_A,
                 Html5QrcodeSupportedFormats.UPC_E
             ]
-            var html5QrcodeScanner = new Html5QrcodeScanner("barcode-scan-display", { 
+            var html5QrcodeScanner = new Html5QrcodeScanner("barcode-scan-display", { // Passes through supported formats into barcode-reader and establishes barcode-scan box sizing.
                 formatsToSupport: formatsToSupport,
                 qrbox: {width: 350, height: 150} 
             });
