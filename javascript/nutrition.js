@@ -1,11 +1,15 @@
 // if the return key is pressed in the search bar, run searchAPI()
 var raw_input = document.getElementById("calorie-search-bar");
+// resultsNumber = 9;
 raw_input.addEventListener("keyup", function(event) {
 if (event.keyCode === 13) { // 13 represents the return key on the keyboard
-event.preventDefault();
-findAPIID(6);
+    event.preventDefault();
+    findAPIID(3);
 }
+}).catch(error =>{ // when resultsNumber is greater than the number of max results, error is thrown.
+    console.log(error);
 });
+
 /**
     * - call API to get ID
     * - use ID to get nutritional info about inputed food (ingredient search)
@@ -39,7 +43,7 @@ async function findAPIID(resultsNumber){
         })
         .catch(error =>{
             // handle error
-            alert("error found while fetching id for SPOONACULAR_API");
+            // alert("error found while fetching ID");
             console.log(error);
         });  
 }
@@ -67,7 +71,7 @@ async function searchByID(foodIDNumber){
 
             let count = 0;
             let macroCount = 0;
-            let macroNames = ['Carbohydrates', 'Fat', 'Protein'];
+            let macroNames = ['Carbohydrates', 'Fat', 'Protein', "Calories"];
             let macroObjects = [];
             while(count < idData.nutrition.nutrients.length){ // loop through array until all macros have been found and saved into macroObjects[] 
                 if( macroNames.includes(idData.nutrition.nutrients[count].name) ){
@@ -77,8 +81,13 @@ async function searchByID(foodIDNumber){
                     if( macroCount >= macroNames.length || count >= (idData.nutrition.nutrients.length - 1) ){
 
                         console.log("Found macros for " + idData.name + ":");
+                        document.write("Found macros for " + idData.name);
+                        document.write("<br>");
+                        // console.log("- " + )
                         for(i=0; i<macroObjects.length; i++){ // logs each macro with its amount and unit in the console
                             console.log("- " + macroObjects[i].name + ": " + macroObjects[i].amount + " " + macroObjects[i].unit);
+                            document.write("- " + macroObjects[i].name + ": " + macroObjects[i].amount + " " + macroObjects[i].unit);
+                            document.write("<br>")
                         }
                         break;
                     }
@@ -91,7 +100,14 @@ async function searchByID(foodIDNumber){
         })
         .catch(error => {
             // handle error
-            alert('error found while fetching nutrition info');
+            // alert('error found while fetching nutrition info');
             console.log(error);
         });
 }
+
+/**
+ * want to be able to save an ingredient through user discretion
+ * ex: press a button to save an ingredient (saves ID number?)
+ * 
+ * 
+ */
