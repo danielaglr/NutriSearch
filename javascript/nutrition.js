@@ -31,13 +31,16 @@ async function findAPIID(resultsNumber){
 
             /** saves ID numbers for each result from data in an array, 
              *  and then runs searchByID() several times, each time 
-             *  with an element of that array (the ID number) as the parameter*/ 
+             *  with an element of that array (the ID number) as the parameter
+            */ 
             let idNumbers = [];
+            let ingredientObjects = [];
             for(k=0; k<resultsNumber; k++){ // adds each ID number to idNumbers[]
                 idNumbers.push(data.results[k].id); 
             }
             for(j=0; j<idNumbers.length; j++){ // calls searchByID() with the ID number of each of n results
-                searchByID(idNumbers[j]); 
+                // ingredientObjects.push(searchByID(idNumbers[j]));
+                searchByID(idNumbers[j])
             }
             
         })
@@ -72,24 +75,31 @@ async function searchByID(foodIDNumber){
             let count = 0;
             let macroCount = 0;
             let macroNames = ['Carbohydrates', 'Fat', 'Protein', "Calories"];
-            let macroObjects = [];
+            let macroObjects = []; // will hold each macro and its respective amount
+            let ingredientName = idData.name; // name of the ingredient
+
             while(count < idData.nutrition.nutrients.length){ // loop through array until all macros have been found and saved into macroObjects[] 
                 if( macroNames.includes(idData.nutrition.nutrients[count].name) ){
 
                     macroObjects.push(idData.nutrition.nutrients[count]);
                     macroCount++;
+
                     if( macroCount >= macroNames.length || count >= (idData.nutrition.nutrients.length - 1) ){
 
-                        console.log("Found macros for " + idData.name + ":");
-                        document.write("Found macros for " + idData.name);
-                        document.write("<br>");
-                        // console.log("- " + )
-                        for(i=0; i<macroObjects.length; i++){ // logs each macro with its amount and unit in the console
-                            console.log("- " + macroObjects[i].name + ": " + macroObjects[i].amount + " " + macroObjects[i].unit);
-                            document.write("- " + macroObjects[i].name + ": " + macroObjects[i].amount + " " + macroObjects[i].unit);
-                            document.write("<br>")
-                        }
-                        break;
+                        // console.log("Found macros for " + idData.name + ":");
+                        // document.write("Found macros for " + idData.name);
+                        // document.write("<br>");
+                        // // console.log("- " + )
+                        // for(i=0; i<macroObjects.length; i++){ // logs each macro with its amount and unit in the console
+                        //     console.log("- " + macroObjects[i].name + ": " + macroObjects[i].amount + " " + macroObjects[i].unit);
+                        //     document.write("- " + macroObjects[i].name + ": " + macroObjects[i].amount + " " + macroObjects[i].unit);
+                        //     document.write("<br>")
+                        // }
+                        
+                        let ingredientMap = {ingredientName : macroObjects};
+                        console.log(ingredientMap.key);
+                        console.log(ingredientMap.value[0].name);
+                        return ingredientMap;
                     }
                     count++;
                 }else{
