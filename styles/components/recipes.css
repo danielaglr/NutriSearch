@@ -136,3 +136,8 @@
 .inactive {
     display: none;
 }
+/* Saved Recipe Display */
+.saved-container {
+    width: 90vw;
+    max-width: 1500px;
+}

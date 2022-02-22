@@ -108,9 +108,16 @@
                 <ul id="recipe-display"></ul>
             </div>
         </div>
+        <!-- Recipe Display -->
+        <div class="saved-container">
+            <div class="saved-display">
+                <ul id="saved-recipes"></ul>
+            </div>
+        </div>
     </main>
     <script src="./javascript/nutriSearch.js"></script>
     <script src="./javascript/recipeadvToggle.js"></script>
+    <script src="./javascript/savedDisplay.js"></script>
     <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
 
     <script type="text/javascript">
@@ -140,6 +147,8 @@
             });
             html5QrcodeScanner.render(onScanSuccess);
         });
+
+        window.onload = savedDisplay;
     </script>
 </body>
 </html>
