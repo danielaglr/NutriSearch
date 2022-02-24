@@ -2,6 +2,7 @@ async function savedDisplay() {
 
     if (localStorage.getItem('recipe') !== null) { // Checks if local storage contains any saved recipes.
         savedRecipeRAW = JSON.parse(localStorage.getItem('recipe')); // Takes raw array and parses it.
+        console.log(savedRecipeRAW);
         savedRecipe = savedRecipeRAW[1]; // Saves last element (recipe ID) from parsed array to variable.
 
         const display = document.getElementById('saved-recipes');

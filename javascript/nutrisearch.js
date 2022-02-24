@@ -28,7 +28,7 @@ async function apiSearch() {
 
     await fetch(edamamUrl).then(r => r.json()).then(function(data) { // Uses API URL established previously to get results based on user input, returns in json format, and plugs data into a function.
         let recipes = data.hits
-        console.log(recipes)
+
         if (recipes.length === 0) { // Checks if 0 results and if so, displays an error message.
             document.getElementById('nrf-alert-id').classList.toggle('inactive')
             } else {
@@ -38,7 +38,6 @@ async function apiSearch() {
                 let img = createNode('img');
                 let title = createNode('h3');
                 let nutrp = createNode('p');
-                let idInfo = createNode('p');
                 let saveButton = createNode('button');
 
                 img.src = recipe.recipe.image;
@@ -50,23 +49,27 @@ async function apiSearch() {
                     <br> Fats: ${Math.round(recipe.recipe.totalNutrients.FAT.quantity)} ${recipe.recipe.totalNutrients.FAT.unit}`;
                 var unsplitrecipeID = `${recipe.recipe.uri}`; // Recieves raw URI which contains recipe ID.
                 var recipeIdentifier = unsplitrecipeID.split('_').pop(); // Takes raw URI and splits apart the section previous to the ID, returning only the ID.
-                idInfo.innerHTML = `${recipeIdentifier}`;
                 saveButton.id = 'save-recipe-btn';
                 saveButton.innerHTML = 'SAVE';
                 saveButton.onclick = function recipeSave() {
-                    console.log('Recipe save ran!')
+                    console.log(window.localStorage.getItem('recipe'))
                     var recipeInfo = [
                         recipeName = `${recipe.recipe.label}`,
                         recipeID = `${recipeIdentifier}`
                     ];
-                    window.localStorage.setItem('recipe', JSON.stringify(recipeInfo));
-                    console.log(window.localStorage.getItem('recipe'));
+
+                    if (window.localStorage.getItem('recipe') === null) {
+                        window.localStorage.setItem('recipe', JSON.stringify(recipeInfo));
+                    } else if (window.localStorage.getItem('recipe') !== null && window.localStorage.getItem('recipe1') === null) {
+                        window.localStorage.setItem('recipe1', JSON.stringify(recipeInfo));
+                    } else if (window.localStorage.getItem('recipe') !==null && window.localStorage.getItem('recipe1') !== null && window.localStorage.getItem('recipe2') === null) {
+                        window.localStorage.setItem('recipe2', JSON.stringify(recipeInfo));
+                    }
                 };
 
                 appendNode(li, title); // Appends elements to parent elements (parent, child) using previously established function.
                 appendNode(li, img);
                 appendNode(li, nutrp);
-                appendNode(li, idInfo);
                 appendNode(li, saveButton);
                 appendNode(ul, li);
             })

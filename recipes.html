@@ -80,12 +80,6 @@
                         </div>
                         <div class="recipe-adv-display">
                             <div class="recipe-adv-chkbx">
-                                <input type="checkbox" name="" id="api-csine-tgle">
-                                <input type="checkbox" name="" id="">
-                                <input type="checkbox" name="" id="">
-                                <input type="checkbox" name="" id="">
-                                <input type="checkbox" name="" id="">
-                                <input type="checkbox" name="" id="">
                             </div>
                         </div>
                     </div>
@@ -106,12 +100,13 @@
                     </div>
                 </div>
                 <ul id="recipe-display"></ul>
-            </div>
-        </div>
-        <!-- Recipe Display -->
-        <div class="saved-container">
-            <div class="saved-display">
-                <ul id="saved-recipes"></ul>
+                <!-- Recipe Display -->
+                <div class="saved-container">
+                    <div class="saved-display">
+                        <h2>Saved Recipes:</h2>
+                        <ul id="saved-recipes"></ul>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -148,7 +143,7 @@
             html5QrcodeScanner.render(onScanSuccess);
         });
 
-        window.onload = savedDisplay;
+        window.onload = savedDisplay; // Run savedDisplay function when page finishes loading.
     </script>
 </body>
 </html>
