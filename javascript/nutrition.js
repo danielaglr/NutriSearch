@@ -1,14 +1,15 @@
 // if the return key is pressed in the search bar, run searchAPI()
 var raw_input = document.getElementById("calorie-search-bar");
-// resultsNumber = 9;
+resultsNumber = 9;
 raw_input.addEventListener("keyup", function(event) {
-if (event.keyCode === 13) { // 13 represents the return key on the keyboard
-    event.preventDefault();
-    findAPIID(3);
-}
-}).catch(error =>{ // when resultsNumber is greater than the number of max results, error is thrown.
-    console.log(error);
+    if (event.keyCode === 13) { // 13 represents the return key on the keyboard
+        event.preventDefault();
+        findAPIID(resultsNumber);
+    }
 });
+// }).catch(error =>{ // when resultsNumber is greater than the number of max results, error is thrown.
+    
+// });
 
 /**
     * - call API to get ID
@@ -18,11 +19,11 @@ if (event.keyCode === 13) { // 13 represents the return key on the keyboard
 */
 async function findAPIID(resultsNumber){
     // resultsNumber is the number of results I want for each search
+    console.log("findAPIID() called");
     var userInput = document.getElementById("calorie-search-bar").value; // I don't know how to make a deep copy of raw_input, so I just call the method again
     const SPOONACULAR_API_KEY = `9e94d130a25f49baa470a7148cef08fe`; // needed for me to access the API
     const SPOONACULAR_API_URL = `https://api.spoonacular.com/food/ingredients/search?query=${userInput}&apiKey=${SPOONACULAR_API_KEY}&number=${resultsNumber}`;
-    let idNumber;
-    
+
     // first searches the API for the ID of whatever inputed food
     await fetch(SPOONACULAR_API_URL)
         .then(response => response.json())
@@ -39,9 +40,13 @@ async function findAPIID(resultsNumber){
                 idNumbers.push(data.results[k].id); 
             }
             for(j=0; j<idNumbers.length; j++){ // calls searchByID() with the ID number of each of n results
-                // ingredientObjects.push(searchByID(idNumbers[j]));
-                searchByID(idNumbers[j])
+                ingredientObjects.push(searchByID(idNumbers[j]));
             }
+
+            setTimeout(console.log(ingredientObjects), 5);          
+            // console.log(ingredientObjects);
+            // console.log("ingredientObjects logged");
+            return ingredientObjects;
             
         })
         .catch(error =>{
@@ -96,10 +101,14 @@ async function searchByID(foodIDNumber){
                         //     document.write("<br>")
                         // }
                         
-                        let ingredientMap = {ingredientName : macroObjects};
-                        console.log(ingredientMap.key);
-                        console.log(ingredientMap.value[0].name);
-                        return ingredientMap;
+                        let ingredientObject = {
+                            name: ingredientName,
+                            macros: macroObjects
+
+                        };
+
+                        console.log(ingredientObject);
+                        return ingredientObject;
                     }
                     count++;
                 }else{
