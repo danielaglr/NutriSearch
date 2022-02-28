@@ -1,19 +1,23 @@
 async function savedDisplay() {
 
     if (localStorage.getItem('recipe') !== null) { // Checks if local storage contains any saved recipes.
-        savedRecipeRAW = JSON.parse(localStorage.getItem('recipe')); // Takes raw array and parses it.
-        console.log(savedRecipeRAW);
-        savedRecipe = savedRecipeRAW[1]; // Saves last element (recipe ID) from parsed array to variable.
 
-        const display = document.getElementById('saved-recipes');
+        savedArray = ['recipe', 'recipe1', 'recipe2'];
 
-        const edamamID = "e3d355ba"; // URL variables for API
-        const edamamKEY = "67961828f045b54be7e5687dee059d6b";
-        const edamamURL = `https://api.edamam.com/api/recipes/v2/${savedRecipe}?type=public&app_id=${edamamID}&app_key=${edamamKEY}`;
-        
-        await fetch(edamamURL).then(r => r.json()).then(function(data) {
+        savedArray.forEach(element => {
+
+            savedRecipeRAW = JSON.parse(localStorage.getItem(element)); // Takes raw array and parses it.
+            savedRecipe = savedRecipeRAW[1]; // Saves last element (recipe ID) from parsed array to variable.
+
+            const display = document.getElementById('saved-recipes');
+
+            const edamamID = "e3d355ba"; // URL variables for API
+            const edamamKEY = "67961828f045b54be7e5687dee059d6b";
+            const edamamURL = `https://api.edamam.com/api/recipes/v2/${savedRecipe}?type=public&app_id=${edamamID}&app_key=${edamamKEY}`;
+            
+            fetch(edamamURL).then(r => r.json()).then(function(data) {
                 let recipe = data;
-                
+                    
                 let li = createNode('li'); // Creates elements using previously established function.
                 let img = createNode('img');
                 let title = createNode('h3');
@@ -31,7 +35,8 @@ async function savedDisplay() {
                 appendNode(li, img);
                 appendNode(li, nutrp);
                 appendNode(display, li);
-        }); 
+            });
+        })
     } else {
         console.log('recipe not found')
     }
