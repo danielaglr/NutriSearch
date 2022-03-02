@@ -1,0 +1,15 @@
+{
+    "Chicken Breast": {
+        "Calories": 1.72,
+        "Protein": {
+            "Amount": 0.21
+        },
+        "Carbs": {
+            "Amount": 0
+        },
+        "Fats": {
+            "Amount": 0.09
+        },
+        "Unit": "g"
+    }
+}
