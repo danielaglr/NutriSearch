@@ -38,8 +38,10 @@ async function apiSearch() {
                 let img = createNode('img');
                 let title = createNode('h3');
                 let nutrp = createNode('p');
-                let saveButton = createNode('button');
-
+                let expandButton = createNode('button');
+                
+                li.classList.add('recipe-card');
+                title.classList.add('recipe-title');
                 img.src = recipe.recipe.image;
                 title.innerHTML = `${recipe.recipe.label}`;
                 nutrp.innerHTML = // Adds all nutritional information into body element of node using dot notation to navigate results returned in JSON format.
@@ -49,7 +51,17 @@ async function apiSearch() {
                     <br> Fats: ${Math.round(recipe.recipe.totalNutrients.FAT.quantity)} ${recipe.recipe.totalNutrients.FAT.unit}`;
                 var unsplitrecipeID = `${recipe.recipe.uri}`; // Recieves raw URI which contains recipe ID.
                 var recipeIdentifier = unsplitrecipeID.split('_').pop(); // Takes raw URI and splits apart the section previous to the ID, returning only the ID.
-                saveButton.id = 'save-recipe-btn';
+                expandButton.id = 'expand-button';
+                expandButton.innerHTML = 'See Details';
+                expandButton.onclick = function recipeExpand() {
+                    console.log("expand pressed");
+                    document.getElementById('recipe-title').innerHTML = `${recipe.recipe.label}`;
+                    document.getElementById('recipe-expand').style.display = 'flex';
+                    document.getElementById('recipe-expand').scrollIntoView();
+
+                }
+                
+                /* saveButton.id = 'save-recipe-btn';
                 saveButton.innerHTML = 'SAVE';
                 saveButton.onclick = function recipeSave() {
                     console.log(window.localStorage.getItem('recipe'))
@@ -65,12 +77,12 @@ async function apiSearch() {
                     } else if (window.localStorage.getItem('recipe') !==null && window.localStorage.getItem('recipe1') !== null && window.localStorage.getItem('recipe2') === null) {
                         window.localStorage.setItem('recipe2', JSON.stringify(recipeInfo));
                     }
-                };
+                }; */
 
                 appendNode(li, title); // Appends elements to parent elements (parent, child) using previously established function.
                 appendNode(li, img);
                 appendNode(li, nutrp);
-                appendNode(li, saveButton);
+                appendNode(li, expandButton);
                 appendNode(ul, li);
             })
         }

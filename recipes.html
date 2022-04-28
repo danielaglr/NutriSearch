@@ -97,6 +97,15 @@
                 </div>
                 <ul id="recipe-display"></ul>
                 <!-- Recipe Display -->
+                <div class="recipe-expand-container">
+                    <div id="recipe-expand">
+                        <h3 id="recipe-title"></h3>
+                        <img id="recipe-img">
+                        <h5 id="recipe-instructions"></h5>
+                        <h5 id="recipe-nutrients"></h5>
+                        <p id="recipe-tags"></p>
+                    </div>
+                </div>
                 <div class="saved-container">
                     <div class="saved-display">
                         <h2>Saved Recipes:</h2>
@@ -108,7 +117,6 @@
     </main>
     <script src="./javascript/nutriSearch.js"></script>
     <script src="./javascript/recipeadvToggle.js"></script>
-    <script src="./javascript/savedDisplay.js"></script>
 
     <script type="text/javascript">
         document.getElementById("recipe-find-search").addEventListener("keyup", function(event) { // When user presses the enter key, submit results and run search function.
@@ -117,8 +125,6 @@
                 apiSearch();
             }
         });
-
-        window.onload = savedDisplay; // Run savedDisplay function when page finishes loading.
     </script>
 </body>
 </html>

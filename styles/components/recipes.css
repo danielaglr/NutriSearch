@@ -118,6 +118,22 @@
     border-radius: 20px;
     background-color: #fff;
 }
+.recipe-card {
+}
+.recipe-title {
+    text-align: center;
+}
+.recipe-expand-container {
+    display: flex;
+    width: 90vw;
+    max-width: 1500px;
+    height: auto;
+    min-height: 90vh;
+}
+#recipe-expand {
+    background-color: #fff;
+    
+}
 /* Alert */
 .alert {
     display: flex;
