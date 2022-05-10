@@ -27,7 +27,7 @@ async function apiSearch() {
     }
 
     await fetch(edamamUrl).then(r => r.json()).then(function(data) { // Uses API URL established previously to get results based on user input, returns in json format, and plugs data into a function.
-        let recipes = data.hits
+        let recipes = data.hits;
 
         if (recipes.length === 0) { // Checks if 0 results and if so, displays an error message.
             document.getElementById('nrf-alert-id').classList.toggle('inactive')
@@ -53,12 +53,23 @@ async function apiSearch() {
                 var recipeIdentifier = unsplitrecipeID.split('_').pop(); // Takes raw URI and splits apart the section previous to the ID, returning only the ID.
                 expandButton.id = 'expand-button';
                 expandButton.innerHTML = 'See Details';
-                expandButton.onclick = function recipeExpand() {
-                    console.log("expand pressed");
-                    document.getElementById('recipe-title').innerHTML = `${recipe.recipe.label}`;
-                    document.getElementById('recipe-expand').style.display = 'flex';
-                    document.getElementById('recipe-expand').scrollIntoView();
 
+                expandButton.addEventListener("click", () => {
+                    document.getElementsByClassName('recipe-expand-container')[0].classList.toggle('inactive');
+                    document.getElementsByClassName('recipe-expand-container')[0].classList.toggle('active');
+                })
+
+                expandButton.onclick = function recipeExpand() {
+                    document.getElementById('recipe-title').innerHTML = `${recipe.recipe.label}`;
+                    document.getElementById('recipe-img').src = `${recipe.recipe.image}`;
+                    document.getElementById('recipe-ingredients').innerHTML = `${recipe.recipe.ingredientLines} `;
+                    document.getElementById('recipe-nutrients').innerHTML = 
+                    `Calories: ${Math.round(recipe.recipe.totalNutrients.ENERC_KCAL.quantity)} ${recipe.recipe.totalNutrients.ENERC_KCAL.unit} 
+                    <br> Protein: ${Math.round(recipe.recipe.totalNutrients.PROCNT.quantity)} ${recipe.recipe.totalNutrients.PROCNT.unit} 
+                    <br> Carbs: ${Math.round(recipe.recipe.totalNutrients.CHOCDF.quantity)} ${recipe.recipe.totalNutrients.CHOCDF.unit}
+                    <br> Fats: ${Math.round(recipe.recipe.totalNutrients.FAT.quantity)} ${recipe.recipe.totalNutrients.FAT.unit}`;
+                    document.getElementById('recipe-url').innerHTML = `See recipe: ${recipe.recipe.url}`;
+                    document.getElementById('recipe-expand').scrollIntoView();
                 }
                 
                 /* saveButton.id = 'save-recipe-btn';
