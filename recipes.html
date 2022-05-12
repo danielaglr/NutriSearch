@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NutriSearch</title>
+
+    <link rel="stylesheet" href="./styles/utils/colors.css">
+    <link rel="stylesheet" href="./styles/utils/fonts.css">
+    <link rel="stylesheet" href="./styles/global/navbar.css">
+    <link rel="stylesheet" href="./styles/components/recipes.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-c">
+            <div class="nav-header">
+                <a href="./index.html" class="nav-logo">
+                    <img src="./assets/images/logo.png" alt="nutrisearch">
+                </a>
+            </div>
+            <div class="nav-link-c">
+                <div class="nav-links">
+                    <a href="./index.html" class="nav-link"> home </a>
+                    <a href="" class="nav-link"> about </a>
+                    <a href="" class="nav-link"> nutrition </a>
+                </div>
+                <div class="main-link">
+                    <a class="main-button" href="./recipes.html"> recipes </a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-c-mobile">
+            <div class="nav-display-mobile">
+                <div class="nav-header-mobile">
+                    <a href="" class="nav-logo-mobile">
+                        <div class="logo-1">
+                            <h1>Nutri</h1>
+                        </div>
+                        <div class="logo-2">
+                            <h1>Search</h1>
+                        </div>
+                    </a>
+                </div>
+                <div class="hamburger-menu">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </div>
+            <div class="nav-link-mobile-c">
+                <div class="nav-links-mobile">
+                    <a href="./index.html" class="nav-link-m"> home </a>
+                    <a href="" class="nav-link-m"> about </a>
+                    <a href="" class="nav-link-m"> nutrition </a>
+                    <a href="./recipes.html" class="nav-link-m"> recipes </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main -->
+    <main class="main-content">
+        <!-- Recipe Finder -->
+        <div class="recipes-container">
+            <div class="recipe-find-container">
+                <div class="recipe-find-box">
+                    <div class="recipe-searchbar">
+                        <div class="recipe-search-input">
+                            <input id="recipe-find-search" type="text" placeholder="Ingredients..">
+                        </div>
+                    </div>
+                    <div class="recipe-adv-opt">
+                        <div class="recipe-adv-tgl">
+                            <p>Advanced Options</p>
+                            <i class='bx bx-chevron-down'></i>
+                        </div>
+                        <div class="recipe-adv-display">
+                            <div class="recipe-adv-chkbx">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-display-container">
+                <div id="hit-counter">
+                    <div id='nrf-alert-id' class="alert nrf-alert inactive">
+                        <div class="alert-icon">
+                            <i class='bx bxs-x-circle'></i>
+                        </div>
+                        <div class="alert-content">
+                            No results found.
+                        </div>
+                        <div class="alert-exit">
+                            <i class='bx bx-x-circle'></i>
+                        </div>
+                    </div>
+                </div>
+                <ul id="recipe-display"></ul>
+                <!-- Recipe Display -->
+                <div class="recipe-expand-container inactive">
+                    <div id="recipe-expand">
+                        <h3 id="recipe-title"></h3>
+                        <div class="left-expand">
+                            <img id="recipe-img">
+                        </div>
+                        <div class="right-expand">
+                            <p id="recipe-nutrients"></p>
+                            <p id="recipe-ingredients"></p>
+                            <p id="recipe-url"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./javascript/nutriSearch.js"></script>
+    <script src="./javascript/recipeadvToggle.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById("recipe-find-search").addEventListener("keyup", function(event) { // When user presses the enter key, submit results and run search function.
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                apiSearch();
+            }
+        });
+    </script>
+</body>
+</html>
