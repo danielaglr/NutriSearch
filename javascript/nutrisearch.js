@@ -49,6 +49,7 @@ async function apiSearch() {
                     <br> Protein: ${Math.round(recipe.recipe.totalNutrients.PROCNT.quantity)} ${recipe.recipe.totalNutrients.PROCNT.unit} 
                     <br> Carbs: ${Math.round(recipe.recipe.totalNutrients.CHOCDF.quantity)} ${recipe.recipe.totalNutrients.CHOCDF.unit}
                     <br> Fats: ${Math.round(recipe.recipe.totalNutrients.FAT.quantity)} ${recipe.recipe.totalNutrients.FAT.unit}`;
+                nutrp.classList.add('recipe-nutri');
                 var unsplitrecipeID = `${recipe.recipe.uri}`; // Recieves raw URI which contains recipe ID.
                 var recipeIdentifier = unsplitrecipeID.split('_').pop(); // Takes raw URI and splits apart the section previous to the ID, returning only the ID.
                 expandButton.id = 'expand-button';
@@ -68,7 +69,7 @@ async function apiSearch() {
                     <br> Protein: ${Math.round(recipe.recipe.totalNutrients.PROCNT.quantity)} ${recipe.recipe.totalNutrients.PROCNT.unit} 
                     <br> Carbs: ${Math.round(recipe.recipe.totalNutrients.CHOCDF.quantity)} ${recipe.recipe.totalNutrients.CHOCDF.unit}
                     <br> Fats: ${Math.round(recipe.recipe.totalNutrients.FAT.quantity)} ${recipe.recipe.totalNutrients.FAT.unit}`;
-                    document.getElementById('recipe-url').innerHTML = `See recipe: ${recipe.recipe.url}`;
+                    document.getElementById('recipe-url').innerHTML += "See recipe:" + '<br>' + `<a href='" + (recipe.recipe.url) + "'>${recipe.recipe.url}</a>`;
                     document.getElementById('recipe-expand').scrollIntoView();
                 }
                 
