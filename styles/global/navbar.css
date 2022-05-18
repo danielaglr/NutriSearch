@@ -81,11 +81,6 @@ a {
 /* Mobile Navbar */
 @media only screen and (max-width: 992px) {
 
-    a {
-        text-decoration: none;
-        color: #000;
-    }
-
     .nav-c {
         display: none;
     }
@@ -138,6 +133,8 @@ a {
         text-align: center;
     }
     .nav-link-m {
+        text-decoration: none;
+        color: #000;
         padding-top: 10px;
         padding-bottom: 10px;
         text-transform: capitalize;
