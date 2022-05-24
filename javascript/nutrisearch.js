@@ -56,8 +56,11 @@ async function apiSearch() {
                 expandButton.innerHTML = 'See Details';
 
                 expandButton.addEventListener("click", () => {
-                    document.getElementsByClassName('recipe-expand-container')[0].classList.toggle('inactive');
-                    document.getElementsByClassName('recipe-expand-container')[0].classList.toggle('active');
+
+                    if (document.getElementsByClassName('recipe-expand-container')[0].classList.contains('inactive') ) {
+                        document.getElementsByClassName('recipe-expand-container')[0].classList.toggle('inactive');
+                        document.getElementsByClassName('recipe-expand-container')[0].classList.toggle('active');
+                    }
                 })
 
                 expandButton.onclick = function recipeExpand() {
@@ -69,7 +72,7 @@ async function apiSearch() {
                     <br> Protein: ${Math.round(recipe.recipe.totalNutrients.PROCNT.quantity)} ${recipe.recipe.totalNutrients.PROCNT.unit} 
                     <br> Carbs: ${Math.round(recipe.recipe.totalNutrients.CHOCDF.quantity)} ${recipe.recipe.totalNutrients.CHOCDF.unit}
                     <br> Fats: ${Math.round(recipe.recipe.totalNutrients.FAT.quantity)} ${recipe.recipe.totalNutrients.FAT.unit}`;
-                    document.getElementById('recipe-url').innerHTML += "See recipe:" + '<br>' + `<a href='" + (recipe.recipe.url) + "'>${recipe.recipe.url}</a>`;
+                    document.getElementById('recipe-url').innerHTML = "See recipe:" + '<br>' + `<a target="_blank" href='${recipe.recipe.url}'>${recipe.recipe.url}</a>`;
                     document.getElementById('recipe-expand').scrollIntoView();
                 }
                 
